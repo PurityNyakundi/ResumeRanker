@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+<body>
+{% block content %}
+    {% for job in jobs %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <b><label>Company name</label></b>
+              <p class="article-content">{{ job.company }}</p>
+              <b><label>Jobtitle</label></b>
+              <p class="article-content">{{ job.Jobtitle }}</p>
+            </div>
+            <b><label>Job decription file</label></b>
+            <p><a class="article-content" download="download" href="/download/{{job.id}}" target="_blank">{{ job.filename1 }}</a></p>
+            {%  if session.is_admin %}
+            <p><a class="article-content" href="/view/{{job.id}}" >View</a></p>
+            {% else  %}
+            <p><a class="article-content" href="/upload/{{job.id}}" >Apply</a></p>
+            {% endif %}
+          </div>
+        </article>
+
+
+
+
+    {% endfor %}
+{% endblock content %}
+</body>

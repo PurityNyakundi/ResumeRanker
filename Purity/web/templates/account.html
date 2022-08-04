@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+<body>
+{% block content %}
+<style>
+  .hidden {
+    display:none;
+}
+</style>
+
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <p class="account-heading">Hello {{ current_user.username }}</p>
+        </div>
+      </div>
+        <br>
+        <div style="margin:20px">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul class=flashes>
+
+          </ul>
+          {% endif %}
+          {% endwith %}
+        </div>
+
+      <form action=""  method="POST" enctype="multipart/form-data">
+          <h1><label>upload your CV</label></h1>
+          {{ form.hidden_tag() }}
+          <div  class="form-group">
+          <input class="form-control " type="file" name="file" required accept=".txt,.docx,.pdf">
+        </div>
+        <br>
+        <input class="btn mt-4 btn-lg" type="submit" value="Upload" onclick="">
+
+
+
+      </form>
+
+
+      {% if msg %}
+      <div id='threeSeconds' class="hidden">
+        <script>alert('Resume Screened Successfully');</script>
+      </div>
+        <div>
+          <script>
+            setTimeout(function(){
+            var modifiedClass = document.getElementById('threeSeconds').className.replace(/\bhidden\b/, '');
+            document.getElementById('threeSeconds').className = modifiedClass;}, 30);
+          </script>
+          <h1 class="text text-success">{{msg}}</h1>
+        </div>
+      {% endif %}
+      </div>
+
+
+{% endblock content %}
+</body>

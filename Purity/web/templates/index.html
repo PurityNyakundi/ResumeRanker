@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #res {
+              font-family: Arial, Helvetica, sans-serif;
+              border-collapse: collapse;
+              align-items: center;
+              width: 70%;
+              margin-left:auto;
+              margin-right:auto;}
+        #res td, #res th {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    letter-spacing: normal;
+                        }
+
+        #res tr:nth-child(even){background-color: #f2f2f2;}
+
+        #res tr:hover {background-color: #ddd;}
+
+        #res th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;}
+            #ema{
+                letter-spacing: normal;
+            }
+
+
+
+    </style>
+</head>
+<body>
+<div >
+    <div>
+    <h2 align="center">Resume Ranking results with emails</h2>
+</div>
+	<table id="res">
+            <th>index</th>
+            <th>emails</th>
+            <th>Resumes</th>
+            <th>percentage rank</th>
+        </tr>
+		</tr>
+         {% for item in result %}
+            <tr >
+			   <td> {{ loop.index }}</td>
+               <td> {{ item[2] }} </td>
+               <td>
+                 <p><a class="article-content" download="download" href="/download/resumes/{{item[0]}}" target="_blank">{{ item[0] }}</a></p>
+               </td>
+               <td>{{ item[1] }}</td>
+            </tr>
+         {% endfor %}
+    </table>
+</div>
+</body>
+</html>
